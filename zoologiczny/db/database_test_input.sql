@@ -1,61 +1,67 @@
--- Sample Data for the `users` Table
-INSERT INTO users (username, email, password, first_name, last_name, address, phone_number, role) 
+-- Create test users
+INSERT INTO users (username, password_hash, email, first_name, last_name, role)
 VALUES
-('john_doe', 'john.doe@example.com', 'hashed_password_123', 'John', 'Doe', '123 Elm Street', '1234567890', 'customer'),
-('jane_smith', 'jane.smith@example.com', 'hashed_password_456', 'Jane', 'Smith', '456 Oak Avenue', '9876543210', 'admin');
+    ('admin', 'hashedpassword', 'admin@example.com', 'Admin', 'User', 'admin'),
+    ('john_doe', 'hashedpassword', 'john@example.com', 'John', 'Doe', 'customer'),
+    ('jane_smith', 'hashedpassword', 'jane@example.com', 'Jane', 'Smith', 'customer');
 
--- Sample Data for the `products` Table
-INSERT INTO products (name, description, price, category, stock_quantity) 
+-- Create test products
+INSERT INTO products (name, description, price, stock_quantity)
 VALUES
-('Dog Food', 'Premium quality dog food for all breeds', 19.99, 'Food', 100),
-('Cat Toy', 'Interactive toy for cats', 5.49, 'Toys', 50),
-('Fish Tank', '20-gallon aquarium for fish', 45.99, 'Aquarium', 30),
-('Bird Cage', 'Spacious cage for small birds', 39.99, 'Birds', 20),
-('Dog Leash', 'Durable leather leash for dogs', 15.99, 'Accessories', 150);
+    ('Dog Food', 'Premium dog food', 15.99, 100),
+    ('Cat Toy', 'Interactive cat toy', 5.99, 50),
+    ('Pet Bed', 'Comfortable pet bed for pets of all sizes', 25.99, 30);
 
--- Sample Data for the `orders` Table
-INSERT INTO orders (user_id, total_amount, status, order_date)
+-- Create test animals
+INSERT INTO animals (species, description, price, stock_quantity)
 VALUES
-(1, 45.47, 'completed', '2024-12-10'),
-(2, 25.48, 'pending', '2024-12-15');
+    ('Dog', 'Loyal and friendly', 150.00, 10),
+    ('Cat', 'Independent and playful', 120.00, 15),
+    ('Parrot', 'Colorful and intelligent', 200.00, 5);
 
--- Sample Data for the `order_items` Table
+-- Create test plants
+INSERT INTO plants (name, description, price, stock_quantity)
+VALUES
+    ('Fern', 'A beautiful house plant', 10.99, 20),
+    ('Cactus', 'Low maintenance desert plant', 7.99, 15),
+    ('Rose', 'A beautiful flowering plant', 12.99, 25);
+
+-- Create test orders
+INSERT INTO orders (user_id, total_amount, shipping_address, status)
+VALUES
+    (1, 100.99, '123 Admin St, Admin City, AC 12345', 'pending'),
+    (2, 50.99, '456 John Ave, Doe City, DC 67890', 'shipped'),
+    (3, 200.00, '789 Jane Blvd, Smith City, SC 11223', 'delivered');
+
+-- Create test order items
+-- For order_id 1
 INSERT INTO order_items (order_id, product_id, quantity, price)
 VALUES
-(1, 1, 2, 19.99),  -- 2 Dog Food items
-(1, 3, 1, 45.99),  -- 1 Fish Tank
-(2, 4, 1, 39.99);  -- 1 Bird Cage
+    (1, 1, 2, 15.99),  -- Dog Food
+    (1, 2, 1, 5.99);   -- Cat Toy
 
--- Sample Data for the `animals` Table
-INSERT INTO animals (species, breed, name, age, adoption_date)
+-- For order_id 2
+INSERT INTO order_items (order_id, animal_id, quantity, price)
 VALUES
-('Dog', 'Golden Retriever', 'Buddy', 3, '2024-12-01'),
-('Cat', 'Siamese', 'Whiskers', 2, '2024-12-05'),
-('Parrot', 'Macaw', 'Polly', 4, '2024-12-10');
+    (2, 1, 1, 150.00); -- Dog
 
--- Sample Data for the `plants` Table
-INSERT INTO plants (name, species, price, stock_quantity)
+-- For order_id 3
+INSERT INTO order_items (order_id, plant_id, quantity, price)
 VALUES
-('Aloe Vera', 'Aloe', 15.99, 20),
-('Cactus', 'Cactaceae', 9.99, 50),
-('Fern', 'Nephrolepis exaltata', 8.49, 30),
-('Succulent', 'Succulent', 12.99, 40);
+    (3, 3, 2, 12.99); -- Rose
 
--- Sample Data for the `reviews` Table
-INSERT INTO reviews (product_id, user_id, rating, comment, review_date)
+-- Create test payments
+INSERT INTO payments (order_id, payment_method, payment_status, payment_amount)
 VALUES
-(1, 1, 5, 'Great dog food! My dog loves it!', '2024-12-12'),
-(3, 2, 4, 'The fish tank is good, but a bit expensive.', '2024-12-16'),
-(4, 1, 5, 'The bird cage is spacious and very sturdy!', '2024-12-17');
+    (1, 'credit_card', 'completed', 100.99),
+    (2, 'paypal', 'completed', 150.00),
+    (3, 'bank_transfer', 'completed', 200.00);
 
--- Sample Data for the `shopping_cart` Table
-INSERT INTO shopping_cart (user_id, product_id, quantity)
+-- Create test invoices
+INSERT INTO invoices (order_id, invoice_number, total_amount, invoice_status)
 VALUES
-(1, 2, 3),  -- 3 Cat Toys
-(2, 5, 1);  -- 1 Dog Leash
+    (1, 'INV-0001', 100.99, 'paid'),
+    (2, 'INV-0002', 150.00, 'paid'),
+    (3, 'INV-0003', 200.00, 'paid');
 
--- Sample Data for the `transactions` Table
-INSERT INTO transactions (order_id, transaction_date, amount, status, payment_method)
-VALUES
-(1, '2024-12-11', 45.47, 'successful', 'credit_card'),
-(2, '2024-12-16', 25.48, 'pending', 'paypal');
+SELECT * from invoices;

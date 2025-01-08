@@ -6,10 +6,10 @@ FROM python:3.13.1-slim
 WORKDIR /app
 
 # Copy the current directory contents into the container
-COPY . /app
+COPY requirements.txt /app/
 
 # Install Flask
-RUN pip install --no-cache-dir flask
+RUN pip install --no-cache-dir -r /app/requirements.txt
 
 # Expose port 5000 for the mock backend
 EXPOSE 5000
