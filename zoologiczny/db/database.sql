@@ -26,11 +26,21 @@ CREATE TYPE invoice_status AS ENUM (
     'paid'       -- Invoice paid
 );
 
--- Enum for Invoice Status
+-- Enum for User Roles
 CREATE TYPE user_role AS ENUM (
     'admin',
     'customer',
-    'employee');
+    'employee'
+);
+
+-- Enum for Product Category
+CREATE TYPE product_category AS ENUM (
+    'animal',       -- Category for animals
+    'plant',        -- Category for plants
+    'food',         -- Category for food products
+    'accessory',    -- Category for accessories
+    'other'         -- Category for miscellaneous products
+);
 
 -- Table for Users
 CREATE TABLE users (
@@ -47,35 +57,16 @@ CREATE TABLE users (
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
--- Table for Products
+-- Unified Table for Products
 CREATE TABLE products (
     product_id SERIAL PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     description TEXT,
     price DECIMAL(10, 2) NOT NULL,
     stock_quantity INT DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Table for Animals
-CREATE TABLE animals (
-    animal_id SERIAL PRIMARY KEY,
-    species VARCHAR(255) NOT NULL,
-    description TEXT,
-    price DECIMAL(10, 2) NOT NULL,
-    stock_quantity INT DEFAULT 0,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
--- Table for Plants
-CREATE TABLE plants (
-    plant_id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT,
-    price DECIMAL(10, 2) NOT NULL,
-    stock_quantity INT DEFAULT 0,
+    category product_category NOT NULL,         -- Using enum for category
+    subcategory VARCHAR(255),                   -- Subcategory for additional classification
+    image_path VARCHAR(255),                    -- Path to product image
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -86,7 +77,7 @@ CREATE TABLE orders (
     user_id INT REFERENCES users(user_id) ON DELETE CASCADE,
     total_amount DECIMAL(10, 2) NOT NULL,
     shipping_address TEXT,
-    status order_status DEFAULT 'pending',  -- Using enum for status
+    status order_status DEFAULT 'pending',      -- Using enum for status
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -96,8 +87,6 @@ CREATE TABLE order_items (
     order_item_id SERIAL PRIMARY KEY,
     order_id INT REFERENCES orders(order_id) ON DELETE CASCADE,
     product_id INT REFERENCES products(product_id),
-    animal_id INT REFERENCES animals(animal_id),
-    plant_id INT REFERENCES plants(plant_id),
     quantity INT NOT NULL,
     price DECIMAL(10, 2) NOT NULL
 );
@@ -106,7 +95,7 @@ CREATE TABLE order_items (
 CREATE TABLE payments (
     payment_id SERIAL PRIMARY KEY,
     order_id INT REFERENCES orders(order_id) ON DELETE CASCADE,
-    payment_method payment_method NOT NULL,  -- Using enum for payment method
+    payment_method payment_method NOT NULL,     -- Using enum for payment method
     payment_status payment_status DEFAULT 'pending',  -- Using enum for payment status
     payment_amount DECIMAL(10, 2) NOT NULL,
     payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP

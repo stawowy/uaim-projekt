@@ -1,67 +1,38 @@
--- Create test users
-INSERT INTO users (username, password_hash, email, first_name, last_name, role)
-VALUES
-    ('admin', 'hashedpassword', 'admin@example.com', 'Admin', 'User', 'admin'),
-    ('john_doe', 'hashedpassword', 'john@example.com', 'John', 'Doe', 'customer'),
-    ('jane_smith', 'hashedpassword', 'jane@example.com', 'Jane', 'Smith', 'customer');
+-- Insert sample users
+INSERT INTO users (username, password_hash, email, first_name, last_name, phone, address, role) VALUES
+('admin_user', 'hashedpassword1', 'admin@example.com', 'Admin', 'User', '123-456-7890', '123 Admin St', 'admin'),
+('john_doe', 'hashedpassword2', 'john.doe@example.com', 'John', 'Doe', '555-123-4567', '456 Main St', 'customer'),
+('jane_smith', 'hashedpassword3', 'jane.smith@example.com', 'Jane', 'Smith', '555-987-6543', '789 Broadway', 'employee');
 
--- Create test products
-INSERT INTO products (name, description, price, stock_quantity)
-VALUES
-    ('Dog Food', 'Premium dog food', 15.99, 100),
-    ('Cat Toy', 'Interactive cat toy', 5.99, 50),
-    ('Pet Bed', 'Comfortable pet bed for pets of all sizes', 25.99, 30);
+-- Insert sample products
+INSERT INTO products (name, description, price, stock_quantity, category, subcategory, image_path) VALUES
+('Golden Retriever', 'Friendly dog, great for families', 1200.00, 5, 'animal', 'dog', '/images/products/golden_retriever.jpg'),
+('Parrot', 'Colorful and talkative bird', 300.00, 10, 'animal', 'bird', '/images/products/parrot.jpg'),
+('Rose Bush', 'Beautiful red roses', 25.00, 50, 'plant', 'flowering plant', '/images/products/rose_bush.jpg'),
+('Cactus', 'Low maintenance succulent plant', 15.00, 100, 'plant', 'succulent', '/images/products/cactus.jpg'),
+('Dog food ', 'tasty dog foodM', 15.00, 20, 'food', 'dog_food', '/images/products/dog_food.jpg');
 
--- Create test animals
-INSERT INTO animals (species, description, price, stock_quantity)
-VALUES
-    ('Dog', 'Loyal and friendly', 150.00, 10),
-    ('Cat', 'Independent and playful', 120.00, 15),
-    ('Parrot', 'Colorful and intelligent', 200.00, 5);
+-- Insert sample orders
+INSERT INTO orders (user_id, total_amount, shipping_address, status) VALUES
+(2, 1500.00, '456 Main St', 'pending'),
+(2, 1200.00, '456 Main St', 'shipped'),
+(3, 325.00, '789 Broadway', 'delivered');
 
--- Create test plants
-INSERT INTO plants (name, description, price, stock_quantity)
-VALUES
-    ('Fern', 'A beautiful house plant', 10.99, 20),
-    ('Cactus', 'Low maintenance desert plant', 7.99, 15),
-    ('Rose', 'A beautiful flowering plant', 12.99, 25);
+-- Insert sample order items
+INSERT INTO order_items (order_id, product_id, quantity, price) VALUES
+(1, 5, 1, 1500.00),  -- Laptop
+(2, 1, 1, 1200.00),  -- Golden Retriever
+(3, 4, 5, 15.00),    -- Cactus
+(3, 3, 2, 25.00);    -- Rose Bush
 
--- Create test orders
-INSERT INTO orders (user_id, total_amount, shipping_address, status)
-VALUES
-    (1, 100.99, '123 Admin St, Admin City, AC 12345', 'pending'),
-    (2, 50.99, '456 John Ave, Doe City, DC 67890', 'shipped'),
-    (3, 200.00, '789 Jane Blvd, Smith City, SC 11223', 'delivered');
+-- Insert sample payments
+INSERT INTO payments (order_id, payment_method, payment_status, payment_amount) VALUES
+(1, 'credit_card', 'completed', 1500.00),
+(2, 'paypal', 'completed', 1200.00),
+(3, 'bank_transfer', 'pending', 325.00);
 
--- Create test order items
--- For order_id 1
-INSERT INTO order_items (order_id, product_id, quantity, price)
-VALUES
-    (1, 1, 2, 15.99),  -- Dog Food
-    (1, 2, 1, 5.99);   -- Cat Toy
-
--- For order_id 2
-INSERT INTO order_items (order_id, animal_id, quantity, price)
-VALUES
-    (2, 1, 1, 150.00); -- Dog
-
--- For order_id 3
-INSERT INTO order_items (order_id, plant_id, quantity, price)
-VALUES
-    (3, 3, 2, 12.99); -- Rose
-
--- Create test payments
-INSERT INTO payments (order_id, payment_method, payment_status, payment_amount)
-VALUES
-    (1, 'credit_card', 'completed', 100.99),
-    (2, 'paypal', 'completed', 150.00),
-    (3, 'bank_transfer', 'completed', 200.00);
-
--- Create test invoices
-INSERT INTO invoices (order_id, invoice_number, total_amount, invoice_status)
-VALUES
-    (1, 'INV-0001', 100.99, 'paid'),
-    (2, 'INV-0002', 150.00, 'paid'),
-    (3, 'INV-0003', 200.00, 'paid');
-
-SELECT * from invoices;
+-- Insert sample invoices
+INSERT INTO invoices (order_id, invoice_number, total_amount, invoice_status) VALUES
+(1, 'INV-1001', 1500.00, 'paid'),
+(2, 'INV-1002', 1200.00, 'paid'),
+(3, 'INV-1003', 325.00, 'pending');

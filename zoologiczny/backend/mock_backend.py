@@ -24,6 +24,7 @@ def home():
 @app.route('/random')
 def random_data():
     return jsonify({"random_number": random.randint(1, 100)})
+
     
 @app.route('/users', methods=['GET'])
 def get_users():
