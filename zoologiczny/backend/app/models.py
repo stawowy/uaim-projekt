@@ -69,7 +69,7 @@ class Product(db.Model):
     description = db.Column(db.Text)
     price = db.Column(db.Numeric(10, 2), nullable=False)
     stock_quantity = db.Column(db.Integer, default=0)
-    category = db.Columnn(db.Enum(ProductCategory, name="product_category_enum"), nullable=False)
+    category = db.Column(db.Enum(ProductCategory, name="product_category_enum"), nullable=False)
     subcategory = db.Column(db.String(255), nullable=False)
     image_path = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
