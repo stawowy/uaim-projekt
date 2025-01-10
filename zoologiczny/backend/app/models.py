@@ -51,8 +51,6 @@ class User(db.Model):
     first_name = db.Column(db.String(100))
     last_name = db.Column(db.String(100))
     phone = db.Column(db.String(20))
-    address = db.Column(db.Text)
-    role = db.Column(db.Enum(UserRole, name="user_role_enum"), default=UserRole.customer, nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -71,6 +69,7 @@ class Product(db.Model):
     stock_quantity = db.Column(db.Integer, default=0)
     category = db.Column(db.Enum(ProductCategory, name="product_category_enum"), nullable=False)
     subcategory = db.Column(db.String(255), nullable=False)
+    rating = db.Column(db.Numeric(10, 2), nullable=False)
     image_path = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -112,23 +111,6 @@ class OrderItem(db.Model):
 
     def __repr__(self):
         return f"<OrderItem {self.order_item_id}>"
-
-
-# Payment Model
-class Payment(db.Model):
-    __tablename__ = 'payments'
-
-    payment_id = db.Column(db.Integer, primary_key=True)
-    order_id = db.Column(db.Integer, db.ForeignKey('orders.order_id', ondelete='CASCADE'))
-    payment_method = db.Column(db.Enum(PaymentMethod, name="payment_method_enum"), nullable=False)
-    payment_status = db.Column(db.Enum(PaymentStatus, name="payment_status_enum"), default=PaymentStatus.pending)
-    payment_amount = db.Column(db.Numeric(10, 2), nullable=False)
-    payment_date = db.Column(db.DateTime, default=datetime.utcnow)
-
-    order = db.relationship('Order', backref=db.backref('payments', lazy=True))
-
-    def __repr__(self):
-        return f"<Payment {self.payment_id}>"
 
 
 # Invoice Model

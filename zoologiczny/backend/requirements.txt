@@ -5,3 +5,4 @@ psycopg2-binary
 Flask-JWT-Extended
 flask-migrate
 flask-httpauth
+flask-bcrypt
