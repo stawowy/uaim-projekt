@@ -34,6 +34,11 @@ class UserRole(Enum):
     customer = 'customer'
     employee = 'employee'
 
+class ProductCategory(Enum):
+    a = 'a'
+    b = 'b'
+    c = 'c'
+
 
 # User Model
 class User(db.Model):
@@ -64,43 +69,14 @@ class Product(db.Model):
     description = db.Column(db.Text)
     price = db.Column(db.Numeric(10, 2), nullable=False)
     stock_quantity = db.Column(db.Integer, default=0)
+    category = db.Columnn(db.Enum(ProductCategory, name="product_category_enum"), nullable=False)
+    subcategory = db.Column(db.String(255), nullable=False)
+    image_path = db.Column(db.String(255), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     def __repr__(self):
         return f"<Product {self.name}>"
-
-
-# Animal Model
-class Animal(db.Model):
-    __tablename__ = 'animals'
-
-    animal_id = db.Column(db.Integer, primary_key=True)
-    species = db.Column(db.String(255), nullable=False)
-    description = db.Column(db.Text)
-    price = db.Column(db.Numeric(10, 2), nullable=False)
-    stock_quantity = db.Column(db.Integer, default=0)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-
-    def __repr__(self):
-        return f"<Animal {self.species}>"
-
-
-# Plant Model
-class Plant(db.Model):
-    __tablename__ = 'plants'
-
-    plant_id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False)
-    description = db.Column(db.Text)
-    price = db.Column(db.Numeric(10, 2), nullable=False)
-    stock_quantity = db.Column(db.Integer, default=0)
-    created_at = db.Column(db.DateTime, default=datetime.utcnow)
-    updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
-
-    def __repr__(self):
-        return f"<Plant {self.name}>"
 
 
 # Order Model
@@ -128,15 +104,11 @@ class OrderItem(db.Model):
     order_item_id = db.Column(db.Integer, primary_key=True)
     order_id = db.Column(db.Integer, db.ForeignKey('orders.order_id', ondelete='CASCADE'))
     product_id = db.Column(db.Integer, db.ForeignKey('products.product_id'))
-    animal_id = db.Column(db.Integer, db.ForeignKey('animals.animal_id'))
-    plant_id = db.Column(db.Integer, db.ForeignKey('plants.plant_id'))
     quantity = db.Column(db.Integer, nullable=False)
     price = db.Column(db.Numeric(10, 2), nullable=False)
 
     order = db.relationship('Order', backref=db.backref('order_items', lazy=True))
     product = db.relationship('Product', backref=db.backref('order_items', lazy=True), foreign_keys=[product_id])
-    animal = db.relationship('Animal', backref=db.backref('order_items', lazy=True), foreign_keys=[animal_id])
-    plant = db.relationship('Plant', backref=db.backref('order_items', lazy=True), foreign_keys=[plant_id])
 
     def __repr__(self):
         return f"<OrderItem {self.order_item_id}>"
