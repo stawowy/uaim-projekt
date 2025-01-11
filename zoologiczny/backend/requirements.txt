@@ -6,3 +6,4 @@ Flask-JWT-Extended
 flask-migrate
 flask-httpauth
 flask-bcrypt
+flask-cors
