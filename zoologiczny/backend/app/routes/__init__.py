@@ -2,7 +2,7 @@ from .login import login_bp
 from .register import register_bp
 from .products import products_bp
 from .profile import profile_bp
-from .cart import order_bp
+from .order import order_bp
 from .test import test_bp
 
 def register_blueprints(app):
