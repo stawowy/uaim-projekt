@@ -2,8 +2,16 @@ from flask import Blueprint, jsonify
 from json import dumps
 from ..models import Product
 from .. import db
+from decimal import Decimal
 
 products_bp = Blueprint('products', __name__)
+
+def decimal_serializer(obj):
+    if isinstance(obj, Decimal):
+        return str(obj)
+    raise TypeError('type not serializable&quot;')
+
+
 
 @products_bp.route('/products')
 def get_products():
@@ -27,8 +35,7 @@ def get_products():
 
         res.append(prod_dict)
 
-    return dumps(res)
-
+    return dumps(res, default=decimal_serializer)
 
 
 @products_bp.route('/products/<product_id>')
