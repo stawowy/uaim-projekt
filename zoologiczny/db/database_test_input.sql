@@ -20,19 +20,20 @@ INSERT INTO users (username, password_hash, email, first_name, last_name, phone,
 INSERT INTO products (name, description, price, stock_quantity, category, subcategory, image_path, rating) VALUES
 ('Golden Retriever', 'Przyjazny pies, idealny dla rodzin', 1200.00, 5, 'animals', 'pies', '/images/products/golden_retriever.jpg', 3.00),
 ('Papuga', 'Kolorowy i gadatliwy ptak', 300.00, 10, 'animals', 'ptak', '/images/products/parrot.jpg', 4.50),
-('Krzak Róż', 'Piękne czerwone róże', 25.00, 50, 'plants', 'roślina kwitnąca', '/images/products/rose_bush.jpg', 4.00),
-('Kaktus', 'Roślina o niskich wymaganiach pielęgnacyjnych', 15.00, 100, 'plants', 'succulent', '/images/products/cactus.jpg', 5.00),
+('Anubias', 'Roślina akwariowa o mocnych liściach, idealna do akwarium, łatwa w pielęgnacji', 25.00, 50, 'plants', 'roślina akwariowa', '/images/products/anubias.jpg', 4.00),
+('Kryptokoryna', 'Roślina akwariowa o długich, wąskich liściach, doskonała do zacienionych akwariów', 15.00, 100, 'plants', 'roślina akwariowa', '/images/products/cryptocoryne.jpg', 5.00),
 ('Jedzenie dla psa', 'Pyszne jedzenie dla psa', 15.00, 20, 'others', 'jedzenie_dla_psa', '/images/products/dog_food.jpg', 4.70),
 ('Zabawka dla psa', 'Zabawka do zabawy dla psa', 50.00, 15, 'others', 'zabawka', '/images/products/dog_toy.jpg', 3.40),
 ('Karmnik dla ptaków', 'Karmnik drewniany dla ptaków', 40.00, 30, 'others', 'ptak', '/images/products/bird_feeder.jpg', 2.69),
 ('Hamak dla kota', 'Hamak dla kota do odpoczynku', 80.00, 12, 'others', 'kot', '/images/products/cat_hammock.jpg', 3.73),
-('Róża Żółta', 'Piękne żółte róże', 30.00, 40, 'plants', 'roślina kwitnąca', '/images/products/yellow_rose.jpg', 4.20),
-('Papryczka chili', 'Roślina z ostrymi papryczkami', 35.00, 60, 'plants', 'roślina przyprawowa', '/images/products/chili.jpg', 4.60),
+('Java Fern', 'Roślina akwariowa o długich liściach, doskonała do tworzenia podwodnych krajobrazów w akwarium', 30.00, 40, 'plants', 'roślina akwariowa', '/images/products/java_fern.jpg', 4.20),
+('Java Moss', 'Roślina akwariowa, idealna do tworzenia naturalnych środowisk w akwarium', 35.00, 60, 'plants', 'roślina akwariowa', '/images/products/java_moss.jpg', 4.60),
 ('Kość dla psa', 'Kość do żucia dla psa', 20.00, 50, 'others', 'zabawka', '/images/products/dog_bone.jpg', 4.10),
-('Fikus', 'Roślina doniczkowa o dużych liściach', 25.00, 25, 'plants', 'roślina ozdobna', '/images/products/ficus.jpg', 3.90),
-('Mała rybka', 'Dekoracyjna rybka do akwarium', 10.00, 200, 'animals', 'ryba', '/images/products/small_fish.jpg', 5.00),
+('Anubias Nana', 'Mała, roślina akwariowa o gruboziarnistych liściach, łatwa w utrzymaniu', 25.00, 25, 'plants', 'roślina akwariowa', '/images/products/anubias_nana.jpg', 3.90),
+('Neon rybka', 'Dekoracyjna rybka do akwarium', 10.00, 200, 'animals', 'ryba', '/images/products/neon_fish.jpg', 5.00),
 ('Karaś złocisty', 'Ryba akwariowa, znana z pięknego wyglądu', 15.00, 80, 'animals', 'ryba', '/images/products/goldfish.jpg', 4.50),
-('Hummingbird', 'Koliber, idealny do obserwacji w ogrodzie', 200.00, 40, 'animals', 'ptak', '/images/products/hummingbird.jpg', 4.80);
+('Koliber', 'Koliber, idealny do obserwacji w ogrodzie', 200.00, 40, 'animals', 'ptak', '/images/products/hummingbird.jpg', 4.80);
+
 
 
 -- Wstawianie przykładowych zamówień

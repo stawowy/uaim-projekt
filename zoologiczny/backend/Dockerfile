@@ -7,6 +7,7 @@ WORKDIR /app
 
 # Copy the current directory contents into the container
 COPY requirements.txt /app/
+COPY /images /app/images
 
 # Install Flask
 RUN pip install --no-cache-dir -r /app/requirements.txt
