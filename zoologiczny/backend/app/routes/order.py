@@ -1,7 +1,9 @@
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required
-from ..models import Product, Order, OrderItem
+import uuid
+from ..models import Product, Order, OrderItem, Invoice, User
 from .. import db
+from utils.email import send_invoice_email
 
 order_bp = Blueprint('order', __name__)
 
@@ -32,17 +34,21 @@ def place_order():
 
         total += price * amount
 
-    new_order = Order(user_id=user_id, total_amount=total, shipping_address=shipping_address) #turururu turururururu tururururu tururururururu
+    new_order = Order(user_id=user_id, total_amount=total, shipping_address=shipping_address)
     new_order_items = []
 
     for item in order_items:
         new_order_items.append(OrderItem(order_id=new_order.order_id, product_id=item.get('product_id', 
                                 quantity=item.get('quantity'), price=item.get('price'))))
 
+    new_invoice = Invoice(order_id=new_order.order_id, invoice_number=uuid.uuid4(), total_amount=total)
+
     try:
         db.session.add(new_order)
         db.session.add_all(new_order_items)
+        db.session.add(new_invoice)
         db.session.commit()
+        send_invoice_email(new_invoice, db.session.query(User).filter_by(user_id=user_id).first().email)
         return jsonify({'message': 'Order placed successfully'}), 201
     except Exception as e:
         db.session.rollback()
