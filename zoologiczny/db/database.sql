@@ -67,7 +67,7 @@ CREATE TABLE products (
     image_path VARCHAR(255),                  -- Path to the product image
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp when the product was created
     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp when the product was last updated
-    rating DECIMAL(3, 2) DEFAULT NULL         -- Average rating for the product (from 0.00 to 5.00)
+    rating FLOAT DEFAULT NULL         -- Average rating for the product (from 0.00 to 5.00)
 );
 
 -- Table for Orders
