@@ -35,11 +35,9 @@ CREATE TYPE user_role AS ENUM (
 
 -- Enum for Product Category
 CREATE TYPE product_category AS ENUM (
-    'animal',       -- Category for animals
-    'plant',        -- Category for plants
-    'food',         -- Category for food products
-    'accessory',    -- Category for accessories
-    'other'         -- Category for miscellaneous products
+    'animals',       -- Category for animals
+    'plants',        -- Category for plants
+    'others'         -- Category for miscellaneous products
 );
 
 -- Table for Users
@@ -59,16 +57,17 @@ CREATE TABLE users (
 
 -- Unified Table for Products
 CREATE TABLE products (
-    product_id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT,
-    price DECIMAL(10, 2) NOT NULL,
-    stock_quantity INT DEFAULT 0,
-    category product_category NOT NULL,         -- Using enum for category
-    subcategory VARCHAR(255),                   -- Subcategory for additional classification
-    image_path VARCHAR(255),                    -- Path to product image
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    product_id SERIAL PRIMARY KEY,            -- Unique identifier for each product
+    name VARCHAR(255) NOT NULL,               -- Product name
+    description TEXT,                         -- Product description
+    price DECIMAL(10, 2) NOT NULL,            -- Product price (with two decimal places)
+    stock_quantity INT DEFAULT 0,             -- Available stock quantity
+    category product_category NOT NULL,       -- Category of the product (using the product_category enum)
+    subcategory VARCHAR(255),                 -- Subcategory for additional classification
+    image_path VARCHAR(255),                  -- Path to the product image
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp when the product was created
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp when the product was last updated
+    rating DECIMAL(3, 2) DEFAULT NULL         -- Average rating for the product (from 0.00 to 5.00)
 );
 
 -- Table for Orders

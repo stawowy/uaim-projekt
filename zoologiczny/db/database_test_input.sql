@@ -9,15 +9,15 @@ INSERT INTO users (username, password_hash, email, first_name, last_name, phone,
 ('ewa_jakubowska', 'hashedpassword7', 'ewa.jakubowska@example.com', 'Ewa', 'Jakubowska', '555-432-9876', '67 Ulica Zielona', 'admin');
 
 -- Wstawianie przykładowych produktów
-INSERT INTO products (name, description, price, stock_quantity, category, subcategory, image_path) VALUES
-('Golden Retriever', 'Przyjazny pies, idealny dla rodzin', 1200.00, 5, 'animal', 'pies', '/images/products/golden_retriever.jpg'),
-('Papuga', 'Kolorowy i gadatliwy ptak', 300.00, 10, 'animal', 'ptak', '/images/products/parrot.jpg'),
-('Krzak Róż', 'Piękne czerwone róże', 25.00, 50, 'plant', 'roślina kwitnąca', '/images/products/rose_bush.jpg'),
-('Kaktus', 'Roślina o niskich wymaganiach pielęgnacyjnych', 15.00, 100, 'plant', 'succulent', '/images/products/cactus.jpg'),
-('Jedzenie dla psa', 'Pyszne jedzenie dla psa', 15.00, 20, 'food', 'jedzenie_dla_psa', '/images/products/dog_food.jpg'),
-('Zabawka dla psa', 'Zabawka do zabawy dla psa', 50.00, 15, 'accessory', 'zabawka', '/images/products/dog_toy.jpg'),
-('Karmnik dla ptaków', 'Karmnik drewniany dla ptaków', 40.00, 30, 'accessory', 'ptak', '/images/products/bird_feeder.jpg'),
-('Hamak dla kota', 'Hamak dla kota do odpoczynku', 80.00, 12, 'accessory', 'kot', '/images/products/cat_hammock.jpg');
+INSERT INTO products (name, description, price, stock_quantity, category, subcategory, image_path,rating) VALUES
+('Golden Retriever', 'Przyjazny pies, idealny dla rodzin', 1200.00, 5, 'animals', 'pies', '/images/products/golden_retriever.jpg',3.00),
+('Papuga', 'Kolorowy i gadatliwy ptak', 300.00, 10, 'animals', 'ptak', '/images/products/parrot.jpg',4.50),
+('Krzak Róż', 'Piękne czerwone róże', 25.00, 50, 'plants', 'roślina kwitnąca', '/images/products/rose_bush.jpg',4.00),
+('Kaktus', 'Roślina o niskich wymaganiach pielęgnacyjnych', 15.00, 100, 'plants', 'succulent', '/images/products/cactus.jpg',5.00),
+('Jedzenie dla psa', 'Pyszne jedzenie dla psa', 15.00, 20, 'others', 'jedzenie_dla_psa', '/images/products/dog_food.jpg',4.70),
+('Zabawka dla psa', 'Zabawka do zabawy dla psa', 50.00, 15, 'others', 'zabawka', '/images/products/dog_toy.jpg',3.40),
+('Karmnik dla ptaków', 'Karmnik drewniany dla ptaków', 40.00, 30, 'others', 'ptak', '/images/products/bird_feeder.jpg',2.69),
+('Hamak dla kota', 'Hamak dla kota do odpoczynku', 80.00, 12, 'others', 'kot', '/images/products/cat_hammock.jpg',3.73);
 
 -- Wstawianie przykładowych zamówień
 INSERT INTO orders (user_id, total_amount, shipping_address, status) VALUES
