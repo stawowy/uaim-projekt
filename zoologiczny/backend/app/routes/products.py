@@ -20,7 +20,7 @@ def get_products():
             "name": product.name,
             "price": product.price,
             "stock_quantity": product.stock_quantity,
-            "category": product.category,
+            "category": product.category.value,
             "rating": product.rating,
             "image_path": product.image_path
         }
