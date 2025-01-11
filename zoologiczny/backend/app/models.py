@@ -35,9 +35,9 @@ class UserRole(Enum):
     employee = 'employee'
 
 class ProductCategory(Enum):
-    plant = 'plant'
-    animal = 'animal'
-    other = 'other'
+    plant = 'Roślina'
+    animal = 'Zwierzę'
+    other = 'Inne'
 
 
 # User Model
