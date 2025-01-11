@@ -16,7 +16,7 @@ db.init_app(app)
 migrate = Migrate(app, db)
 
 # Simple route to check if backend is working
-@app.route('/')
+@app.route('/test')
 def home():
     return jsonify({"message": "Backend is running!"})
 
