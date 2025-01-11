@@ -16,6 +16,7 @@ services:
       - db
     volumes:
       - ./backend:/app
+      # - ./images:/app/images
     
 
   db:
