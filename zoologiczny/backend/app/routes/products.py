@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify
+from json import dumps
 from ..models import Product
 from .. import db
 
@@ -26,7 +27,7 @@ def get_products():
 
         res.append(prod_dict)
 
-    return jsonify(res)
+    return dumps(res)
 
 
 

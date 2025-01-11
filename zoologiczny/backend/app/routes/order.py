@@ -22,8 +22,8 @@ def place_order():
     total = 0
     order_items = []
 
-    for pid, amount in products_dict.items:
-        product = db.session.query(Product).filter_by(product_id=pid).first()
+    for pid, amount in products_dict.items():
+        product = db.session.query(Product).filter_by(product_id=int(pid)).first()
 
         if product:
             if amount > product.stock_quantity:
