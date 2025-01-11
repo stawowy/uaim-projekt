@@ -44,7 +44,7 @@ def get_product_by_id(product_id):
         "description": product.description,
         "price": product.price,
         "stock_quantity": product.stock_quantity,
-        "category": product.category,
+        "category": product.category.value,
         "subcategory": product.subcategory,
         "rating": product.rating,
         "image_path": product.image_path
