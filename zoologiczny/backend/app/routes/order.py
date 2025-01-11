@@ -16,7 +16,7 @@ def place_order():
     products_dict = data.get('products')
     shipping_address = data.get('shipping_address')
 
-    if not (user_id and products_dict and shipping_address):
+    if not (user_id and products_dict):
         return jsonify({'error': 'Missing fields'}), 400
 
     total = 0
@@ -34,7 +34,11 @@ def place_order():
 
         total += price * amount
 
-    new_order = Order(user_id=user_id, total_amount=total, shipping_address=shipping_address)
+    if shipping_address:
+        new_order = Order(user_id=user_id, total_amount=total, shipping_address=shipping_address)
+    else:
+        new_order = Order(user_id=user_id, total_amount=total)
+        
     new_order_items = []
 
     for item in order_items:
