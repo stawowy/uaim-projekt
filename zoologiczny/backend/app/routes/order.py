@@ -3,7 +3,7 @@ from flask_jwt_extended import jwt_required
 import uuid
 from ..models import Product, Order, OrderItem, Invoice, User
 from .. import db
-from utils.email import send_invoice_email
+from app.utils.email import send_invoice_email
 
 order_bp = Blueprint('order', __name__)
 
