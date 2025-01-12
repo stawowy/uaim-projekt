@@ -1,7 +1,10 @@
 import requests
+import pytest
 
 BASE_URL = 'http://127.0.0.1:5000'
 
+# this is for simplicity, create an user first to not have to clear the database each test
+@pytest.mark.order(1)
 def test_register_user_success():
     url = f'{BASE_URL}/api/register'
     payload = {
