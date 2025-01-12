@@ -1,22 +1,22 @@
--- Wstawianie przykładowych użytkowników
-INSERT INTO users (username, password_hash, email, first_name, last_name, phone, address, role) VALUES
-('admin_uzytkownik', 'hashedpassword1', 'admin@example.com', 'Admin', 'User', '123-456-7890', '123 Ulica Admina', 'admin'),
-('jan_kowalski', 'hashedpassword2', 'jan.kowalski@example.com', 'Jan', 'Kowalski', '555-123-4567', '456 Ulica Główna', 'customer'),
-('anna_nowak', 'hashedpassword3', 'anna.nowak@example.com', 'Anna', 'Nowak', '555-987-6543', '789 Broadway', 'employee'),
-('paulina_zielinska', 'hashedpassword4', 'paulina.zielinska@example.com', 'Paulina', 'Zielinska', '555-567-8901', '12 Ulica Róż', 'customer'),
-('mariusz_wisniewski', 'hashedpassword5', 'mariusz.wisniewski@example.com', 'Mariusz', 'Wiśniewski', '555-876-5432', '34 Ulica Nowa', 'customer'),
-('krzysztof_adamski', 'hashedpassword6', 'krzysztof.adamski@example.com', 'Krzysztof', 'Adamski', '555-654-3210', '99 Ulica Stara', 'employee'),
-('ewa_jakubowska', 'hashedpassword7', 'ewa.jakubowska@example.com', 'Ewa', 'Jakubowska', '555-432-9876', '67 Ulica Zielona', 'admin'),
-('lukasz_witkowski', 'hashedpassword8', 'lukasz.witkowski@example.com', 'Łukasz', 'Witkowski', '555-321-6540', '14 Ulica Krótka', 'customer'),
-('karolina_mazur', 'hashedpassword9', 'karolina.mazur@example.com', 'Karolina', 'Mazur', '555-213-4568', '21 Ulica Ogrodowa', 'employee'),
-('kamil_bernat', 'hashedpassword10', 'kamil.bernat@example.com', 'Kamil', 'Bernat', '555-654-9876', '36 Ulica Leśna', 'customer'),
-('daria_michalska', 'hashedpassword11', 'daria.michalska@example.com', 'Daria', 'Michalska', '555-423-7890', '5 Ulica Wiosenna', 'admin'),
-('patryk_borek', 'hashedpassword12', 'patryk.borek@example.com', 'Patryk', 'Borek', '555-432-1234', '8 Ulica Górska', 'customer'),
-('agata_kwiatkowska', 'hashedpassword13', 'agata.kwiatkowska@example.com', 'Agata', 'Kwiatkowska', '555-876-5431', '2 Ulica Kwiatowa', 'employee'),
-('mateusz_sienkiewicz', 'hashedpassword14', 'mateusz.sienkiewicz@example.com', 'Mateusz', 'Sienkiewicz', '555-321-9876', '22 Ulica Morska', 'customer'),
-('magdalena_baginski', 'hashedpassword15', 'magdalena.baginski@example.com', 'Magdalena', 'Bagiński', '555-654-7890', '77 Ulica Wiatrów', 'admin');
+-- Inserting sample users
+INSERT INTO users (username, password_hash, email, first_name, last_name, phone) VALUES
+('admin_uzytkownik', 'hashedpassword1', 'admin@example.com', 'Admin', 'User', '123-456-7890'),
+('jan_kowalski', 'hashedpassword2', 'jan.kowalski@example.com', 'Jan', 'Kowalski', '555-123-4567'),
+('anna_nowak', 'hashedpassword3', 'anna.nowak@example.com', 'Anna', 'Nowak', '555-987-6543'),
+('paulina_zielinska', 'hashedpassword4', 'paulina.zielinska@example.com', 'Paulina', 'Zielinska', '555-567-8901'),
+('mariusz_wisniewski', 'hashedpassword5', 'mariusz.wisniewski@example.com', 'Mariusz', 'Wiśniewski', '555-876-5432'),
+('krzysztof_adamski', 'hashedpassword6', 'krzysztof.adamski@example.com', 'Krzysztof', 'Adamski', '555-654-3210'),
+('ewa_jakubowska', 'hashedpassword7', 'ewa.jakubowska@example.com', 'Ewa', 'Jakubowska', '555-432-9876'),
+('lukasz_witkowski', 'hashedpassword8', 'lukasz.witkowski@example.com', 'Łukasz', 'Witkowski', '555-321-6540'),
+('karolina_mazur', 'hashedpassword9', 'karolina.mazur@example.com', 'Karolina', 'Mazur', '555-213-4568'),
+('kamil_bernat', 'hashedpassword10', 'kamil.bernat@example.com', 'Kamil', 'Bernat', '555-654-9876'),
+('daria_michalska', 'hashedpassword11', 'daria.michalska@example.com', 'Daria', 'Michalska', '555-423-7890'),
+('patryk_borek', 'hashedpassword12', 'patryk.borek@example.com', 'Patryk', 'Borek', '555-432-1234'),
+('agata_kwiatkowska', 'hashedpassword13', 'agata.kwiatkowska@example.com', 'Agata', 'Kwiatkowska', '555-876-5431'),
+('mateusz_sienkiewicz', 'hashedpassword14', 'mateusz.sienkiewicz@example.com', 'Mateusz', 'Sienkiewicz', '555-321-9876'),
+('magdalena_baginski', 'hashedpassword15', 'magdalena.baginski@example.com', 'Magdalena', 'Bagiński', '555-654-7890');
 
--- Wstawianie przykładowych produktów
+-- Inserting sample products
 INSERT INTO products (name, description, price, stock_quantity, category, subcategory, image_path, rating) VALUES
 ('Golden Retriever', 'Przyjazny pies, idealny dla rodzin', 1200.00, 5, 'animals', 'pies', 'products/golden_retriever.jpg', 3.00),
 ('Papuga', 'Kolorowy i gadatliwy ptak', 300.00, 10, 'animals', 'ptak', 'products/parrot.jpg', 4.50),
@@ -34,12 +34,9 @@ INSERT INTO products (name, description, price, stock_quantity, category, subcat
 ('Karaś złocisty', 'Ryba akwariowa, znana z pięknego wyglądu', 15.00, 80, 'animals', 'ryba', 'products/goldfish.jpg', 4.50),
 ('Koliber', 'Koliber, idealny do obserwacji w ogrodzie', 200.00, 40, 'animals', 'ptak', 'products/hummingbird.jpg', 4.80);
 
-
-
--- Wstawianie przykładowych zamówień
+-- Inserting sample orders
 INSERT INTO orders (user_id, total_amount, shipping_address, status) VALUES
 (2, 1500.00, '456 Ulica Główna', 'pending'),
-(2, 1200.00, '456 Ulica Główna', 'shipped'),
 (3, 325.00, '789 Broadway', 'delivered'),
 (4, 550.00, '12 Ulica Róż', 'pending'),
 (5, 700.00, '34 Ulica Nowa', 'shipped'),
@@ -54,8 +51,7 @@ INSERT INTO orders (user_id, total_amount, shipping_address, status) VALUES
 (14, 850.00, '22 Ulica Morska', 'delivered'),
 (15, 900.00, '77 Ulica Wiatrów', 'shipped');
 
-
--- Wstawianie przykładowych pozycji zamówienia
+-- Inserting sample order items
 INSERT INTO order_items (order_id, product_id, quantity, price) VALUES
 (1, 5, 2, 30.00),
 (1, 1, 1, 1200.00),
@@ -73,38 +69,19 @@ INSERT INTO order_items (order_id, product_id, quantity, price) VALUES
 (12, 5, 3, 30.00),
 (13, 6, 4, 50.00);
 
--- Wstawianie przykładowych płatności
-INSERT INTO payments (order_id, payment_method, payment_status, payment_amount) VALUES
-(1, 'credit_card', 'completed', 1500.00),
-(2, 'paypal', 'completed', 1200.00),
-(3, 'bank_transfer', 'pending', 325.00),
-(4, 'credit_card', 'completed', 550.00),
-(5, 'paypal', 'completed', 700.00),
-(6, 'bank_transfer', 'completed', 350.00),
-(7, 'paypal', 'pending', 400.00),
-(8, 'credit_card', 'completed', 450.00),
-(9, 'paypal', 'completed', 500.00),
-(10, 'bank_transfer', 'completed', 1000.00),
-(11, 'credit_card', 'completed', 1200.00),
-(12, 'paypal', 'completed', 750.00),
-(13, 'credit_card', 'completed', 620.00),
-(14, 'paypal', 'completed', 850.00),
-(15, 'bank_transfer', 'completed', 900.00);
-
--- Wstawianie przykładowych faktur
-INSERT INTO invoices (order_id, invoice_number, total_amount, invoice_status) VALUES
-(1, 'FV-1001', 1500.00, 'paid'),
-(2, 'FV-1002', 1200.00, 'paid'),
-(3, 'FV-1003', 325.00, 'pending'),
-(4, 'FV-1004', 550.00, 'paid'),
-(5, 'FV-1005', 700.00, 'paid'),
-(6, 'FV-1006', 350.00, 'paid'),
-(7, 'FV-1007', 400.00, 'pending'),
-(8, 'FV-1008', 450.00, 'paid'),
-(9, 'FV-1009', 500.00, 'paid'),
-(10, 'FV-1010', 1000.00, 'paid'),
-(11, 'FV-1011', 1200.00, 'paid'),
-(12, 'FV-1012', 750.00, 'paid'),
-(13, 'FV-1013', 620.00, 'paid'),
-(14, 'FV-1014', 850.00, 'paid'),
-(15, 'FV-1015', 900.00, 'paid');
+-- Inserting sample invoices
+INSERT INTO invoices (order_id, invoice_number, total_amount, invoice_status, invoice_date) VALUES
+(1, 'INV-001', 1500.00, 'pending', CURRENT_TIMESTAMP),
+(2, 'INV-002', 325.00, 'paid', CURRENT_TIMESTAMP),
+(3, 'INV-003', 550.00, 'pending', CURRENT_TIMESTAMP),
+(4, 'INV-004', 700.00, 'paid', CURRENT_TIMESTAMP),
+(5, 'INV-005', 350.00, 'pending', CURRENT_TIMESTAMP),
+(6, 'INV-006', 400.00, 'paid', CURRENT_TIMESTAMP),
+(7, 'INV-007', 450.00, 'pending', CURRENT_TIMESTAMP),
+(8, 'INV-008', 500.00, 'paid', CURRENT_TIMESTAMP),
+(9, 'INV-009', 1000.00, 'pending', CURRENT_TIMESTAMP),
+(10, 'INV-010', 1200.00, 'paid', CURRENT_TIMESTAMP),
+(11, 'INV-011', 750.00, 'pending', CURRENT_TIMESTAMP),
+(12, 'INV-012', 620.00, 'paid', CURRENT_TIMESTAMP),
+(13, 'INV-013', 850.00, 'pending', CURRENT_TIMESTAMP),
+(14, 'INV-014', 900.00, 'paid', CURRENT_TIMESTAMP);

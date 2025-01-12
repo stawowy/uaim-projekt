@@ -5,7 +5,7 @@ CREATE TYPE order_status_enum AS ENUM ('pending', 'shipped', 'delivered', 'cance
 CREATE TYPE invoice_status_enum AS ENUM ('pending', 'paid');
 
 -- Enum for Product Category
-CREATE TYPE product_category_enum AS ENUM ('Roślina', 'Zwierzę', 'Inne');
+CREATE TYPE product_category_enum AS ENUM ('plants', 'animals', 'others');
 
 -- Table for Users
 CREATE TABLE users (
