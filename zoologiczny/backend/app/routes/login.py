@@ -21,7 +21,7 @@ def login():
 
     access_token = create_access_token(identity=str(user.user_id), expires_delta=timedelta(minutes=current_app.config['ACCESS_TOKEN_EXPIRATION_MINUTES']))
     refresh_token = create_refresh_token(identity=str(user.user_id))
-    return jsonify({'message': 'Login successful', 'access_token': access_token, 'refresh_token': refresh_token}), 200
+    return jsonify({'message': 'Login successful', 'username': user.username, 'access_token': access_token, 'refresh_token': refresh_token}), 200
 
 
 @login_bp.route('/refresh', methods=['POST'])
