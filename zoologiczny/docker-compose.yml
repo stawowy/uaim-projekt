@@ -13,36 +13,37 @@ services:
       - SENDER_EMAIL_ADDRESS=sklepzoologicznyuaim@gmail.com
       - SENDER_EMAIL_PASSWORD=kochamKomandosa123
     depends_on:
-      - db
+        db:
+            condition: service_healthy
     volumes:
       - ./backend:/app
       # - ./images:/app/images
     
 
   db:
-    image: postgres:15
+    build:
+        context: .
+        dockerfile: Dockerfile.db
     container_name: zoologiczny_db
-    environment:
-      POSTGRES_USER: user
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: zoologiczny
+    healthcheck:
+      test: pg_isready -U postgres
     ports:
       - "5432:5432"
     volumes:
       - ./db_data:/var/lib/postgresql/data
-  frontend:
-    build:
-      context: ./frontend
-    container_name: zoologiczny_frontend
-    ports:
-      - "3000:3000"
-    volumes:
-     - ./frontend/react-app:/app
-     - ./frontend/react-app/node_modules:/app/node_modules
-    environment:
-      NODE_ENV: development
-    stdin_open: true
-    tty: true
+ # frontend:
+ #   build:
+ #     context: ./frontend
+ #   container_name: zoologiczny_frontend
+ #   ports:
+ #     - "3000:3000"
+ #   volumes:
+ #    - ./frontend/react-app:/app
+ #    - ./frontend/react-app/node_modules:/app/node_modules
+ #   environment:
+ #     NODE_ENV: development
+ #   stdin_open: true
+ #   tty: true
 
 volumes:
   db_data:
