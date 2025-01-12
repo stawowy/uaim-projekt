@@ -17,7 +17,6 @@ services:
             condition: service_healthy
     volumes:
       - ./backend:/app
-      # - ./images:/app/images
     
 
   db:
@@ -26,12 +25,11 @@ services:
         dockerfile: Dockerfile.db
     container_name: zoologiczny_db
     healthcheck:
-      test: pg_isready -U postgres
+      test: pg_isready -U user
     ports:
       - "5432:5432"
     volumes:
       - ./db_data:/var/lib/postgresql/data
-
 
   frontend:
     build:
