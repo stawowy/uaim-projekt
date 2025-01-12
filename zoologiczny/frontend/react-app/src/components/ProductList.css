@@ -1,0 +1,119 @@
+.product-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between items */
+    justify-content: center; /* Center items horizontally */
+    padding: 20px;
+  }
+  
+  .product-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 32px;
+    text-align: center;
+    width: 200px; /* Szerokość pojedynczego produktu */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .product-name {
+    font-size: 18px;
+    margin: 8px 0;
+  }
+  
+  .product-price {
+    font-size: 16px;
+    color: #555;
+  }
+  
+  .add-to-cart-button {
+    background-color: #109648;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+  }
+  
+  .add-to-cart-button:hover {
+    background-color: #0056b3;
+    
+  }
+
+  /* Search bar container */
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px; /* Space between input and button */
+}
+
+/* Search input styling */
+.search-input {
+  width: 100%;
+  max-width: 400px; /* Responsive size */
+  padding: 3px;
+  font-size: 0.9em;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  outline: none;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+.search-input:focus {
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  border-color: #007bff;
+}
+
+/* Search button styling */
+.search-button {
+  padding: 10px 10px;
+  font-size: 1em;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.search-button:hover {
+  background-color: #0056b3;
+}
+
+.search-button:active {
+  background-color: #004085;
+}
+
+  /* Product details link styling */
+.product-details-link {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 15px;
+  text-align: center;
+  background-color: #28a745; /* Green background */
+  color: white;
+  font-size: 1em;
+  border-radius: 20px; /* Rounded corners */
+  text-decoration: none; /* Remove underline */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.product-details-link:hover {
+  background-color: #218838; /* Darker green on hover */
+  transform: translateY(-2px); /* Slight lifting effect */
+}
+
+.product-details-link:active {
+  background-color: #1e7e34; /* Even darker green on click */
+  transform: translateY(0); /* Reset the lift */
+}

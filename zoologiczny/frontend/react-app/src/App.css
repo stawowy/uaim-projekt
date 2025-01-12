@@ -1,0 +1,204 @@
+/* General Styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  
+}
+
+.container {
+  padding: 20px;
+  max-width: 120000px;
+  margin: auto;
+}
+
+/* General Styles for Navbar */
+.navbar {
+  background-color: #ffffff; /* Calm green to reflect nature */
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between; /* Space between logo and links */
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar-logo {
+  display: flex;
+  align-items: center;
+  font-size: 0.5rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+.logo-image {
+  height: 70px; /* Ustaw wysokość logo */
+  width: auto;  /* Proporcjonalna szerokość */
+}
+
+.navbar-list {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.navbar-item {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.navbar-link {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  transition: color 0.3s, transform 0.2s;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+}
+
+.navbar-link:hover {
+  color: #e7ebc5; /* Darker green for hover */
+  background-color: #109648; /* Golden highlight */
+  transform: scale(1.05);
+}
+
+/* Welcome Text */
+.navbar-item {
+  color: rgb(46, 42, 42);
+}
+
+/* Cart Count Styling */
+.navbar-item .navbar-link {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .navbar {
+      padding: 1rem;
+      flex-direction: column;
+      align-items: flex-start; /* Align logo and list vertically */
+  }
+
+  .navbar-list {
+      flex-direction: column;
+      gap: 1rem;
+      align-items: flex-start;
+  }
+}
+
+/* Active Link Styling */
+.navbar-link.active {
+  border-bottom: 2px solid #e76f51; /* Distinct red accent */
+}
+
+
+/* Product Details Styling */
+.product-details {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.add-to-cart-button {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-to-cart-button:hover {
+  background-color: #0056b3;
+}
+
+/* Cart Styling */
+.cart-container {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.remove-button {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.remove-button:hover {
+  background-color: #c82333;
+}
+
+.checkout-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.checkout-button:hover {
+  background-color: #218838;
+}
+
+/* Form Styling */
+.form-container {
+  background-color: white;
+  padding: 20px;
+  width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.form-input {
+  margin-bottom: 15px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-button:hover {
+  background-color: #218838;
+}
+
