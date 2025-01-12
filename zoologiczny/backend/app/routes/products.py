@@ -26,9 +26,11 @@ def get_products():
         prod_dict = {
             "product_id": product.product_id,
             "name": product.name,
+            "description": product.description,
             "price": product.price,
             "stock_quantity": product.stock_quantity,
             "category": product.category.value,
+            "subcategory": product.subcategory,
             "rating": product.rating,
             "image_path": product.image_path
         }
@@ -57,4 +59,4 @@ def get_product_by_id(product_id):
         "image_path": product.image_path
     }
 
-    return jsonify(res)
+    return dumps(res, default=decimal_serializer)
