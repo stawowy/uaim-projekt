@@ -31,19 +31,21 @@ services:
       - "5432:5432"
     volumes:
       - ./db_data:/var/lib/postgresql/data
- # frontend:
- #   build:
- #     context: ./frontend
- #   container_name: zoologiczny_frontend
- #   ports:
- #     - "3000:3000"
- #   volumes:
- #    - ./frontend/react-app:/app
- #    - ./frontend/react-app/node_modules:/app/node_modules
- #   environment:
- #     NODE_ENV: development
- #   stdin_open: true
- #   tty: true
+
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: zoologiczny_frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend/react-app:/app
+      - ./frontend/react-app/node_modules:/app/node_modules
+    environment:
+      NODE_ENV: development
+    stdin_open: true
+    tty: true
 
 volumes:
   db_data:
