@@ -1,0 +1,14 @@
+# Use the official PostgreSQL image from Docker Hub
+FROM postgres:15
+
+# Set environment variables for the database
+ENV POSTGRES_USER=user
+ENV POSTGRES_PASSWORD=password
+ENV POSTGRES_DB=zoologiczny
+
+# Copy the SQL file into the Docker container
+COPY db/database.sql /docker-entrypoint-initdb.d/
+COPY db/database_test_input.sql /docker-entrypoint-initdb.d/
+
+# Expose PostgreSQL default port
+EXPOSE 5432
