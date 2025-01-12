@@ -6,20 +6,20 @@ db = SQLAlchemy()
 
 # Enum for Order Status
 class OrderStatus(Enum):
-    PENDING = 'pending'      # Order placed but not yet processed
-    SHIPPED = 'shipped'      # Order shipped
-    DELIVERED = 'delivered'  # Order delivered
-    CANCELED = 'canceled'    # Order canceled
+    pending = 'pending'      # Order placed but not yet processed
+    shipped = 'shipped'      # Order shipped
+    delivered = 'delivered'  # Order delivered
+    canceled = 'canceled'    # Order canceled
 
 # Enum for Invoice Status
 class InvoiceStatus(Enum):
-    PENDING = 'pending'    # Invoice not yet paid
-    PAID = 'paid'          # Invoice paid
+    pending = 'pending'    # Invoice not yet paid
+    paid = 'paid'          # Invoice paid
 
 class ProductCategory(Enum):
-    PLANTS = 'Roślina'
-    ANIMALS = 'Zwierzę'
-    OTHERS = 'Inne'
+    plants = 'Roślina'
+    animals = 'Zwierzę'
+    others = 'Inne'
 
 
 # User Model
@@ -68,7 +68,7 @@ class Order(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id', ondelete='CASCADE'))
     total_amount = db.Column(db.Numeric(10, 2), nullable=False)
     shipping_address = db.Column(db.Text)
-    status = db.Column(db.Enum(OrderStatus, name="order_status_enum"), default=OrderStatus.PENDING)
+    status = db.Column(db.Enum(OrderStatus, name="order_status_enum"), default=OrderStatus.pending)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -104,7 +104,7 @@ class Invoice(db.Model):
     invoice_number = db.Column(db.String(100), unique=True, nullable=False)
     invoice_date = db.Column(db.DateTime, default=datetime.utcnow)
     total_amount = db.Column(db.Numeric(10, 2), nullable=False)
-    invoice_status = db.Column(db.Enum(InvoiceStatus, name="invoice_status_enum"), default=InvoiceStatus.PENDING)
+    invoice_status = db.Column(db.Enum(InvoiceStatus, name="invoice_status_enum"), default=InvoiceStatus.pending)
 
     order = db.relationship('Order', backref=db.backref('invoices', lazy=True))
 
