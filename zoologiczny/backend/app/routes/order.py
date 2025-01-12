@@ -10,6 +10,40 @@ order_bp = Blueprint('order', __name__)
 @order_bp.route('/order', methods=['POST'])
 @jwt_required()
 def place_order():
+    """
+    Place a new order.
+
+    Request JSON:
+    {
+        "user_id": 1,
+        "products": {
+            "1": 2,
+            "2": 1
+        },
+        "shipping_address": "Test address"
+    }
+
+    Responses:
+    201 Created:
+    {
+        "message": "Order placed successfully"
+    }
+
+    400 Bad Request:
+    {
+        "error": "Missing fields"
+    }
+
+    404 Not Found:
+    {
+        "error": "Product not found"
+    }
+
+    409 Conflict:
+    {
+        "error": "Specified quantity too large"
+    }
+    """
     data = request.json
     user_id = data.get('user_id')
     products_dict = data.get('products')

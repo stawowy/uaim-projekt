@@ -6,6 +6,35 @@ register_bp = Blueprint('register', __name__)
 
 @register_bp.route('/register', methods=['POST'])
 def register_user():
+    """
+    Register a new user.
+
+    Request JSON:
+    {
+        "username": "newuser",
+        "email": "newuser@example.com",
+        "password": "password123",
+        "first_name": "First",
+        "last_name": "Last",
+        "phone": "1234567890"
+    }
+
+    Responses:
+    201 Created:
+    {
+        "message": "User registered successfully"
+    }
+
+    400 Bad Request:
+    {
+        "error": "All fields are required"
+    }
+
+    400 Bad Request:
+    {
+        "error": "User already exists"
+    }
+    """
     data = request.json
     username = data.get('username')
     email = data.get('email')

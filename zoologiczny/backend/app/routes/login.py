@@ -8,6 +8,34 @@ login_bp = Blueprint('login', __name__)
 
 @login_bp.route('/login', methods=['POST'])
 def login():
+    """
+    Authenticate a user and return access and refresh tokens.
+
+    Request JSON:
+    {
+        "email": "user@example.com",
+        "password": "password"
+    }
+
+    Responses:
+    200 OK:
+    {
+        "message": "Login successful",
+        "username": "username",
+        "access_token": "access_token",
+        "refresh_token": "refresh_token"
+    }
+
+    400 Bad Request:
+    {
+        "error": "Email and password are required"
+    }
+
+    401 Unauthorized:
+    {
+        "error": "Invalid email or password"
+    }
+    """
     data = request.json
     email = data.get('email')
     password = data.get('password')
@@ -27,6 +55,25 @@ def login():
 @login_bp.route('/refresh', methods=['POST'])
 @jwt_required(refresh=True)
 def refresh():
+    """
+    Refresh the access token using the refresh token.
+
+    Request Headers:
+    {
+        "Authorization": "Bearer <refresh_token>"
+    }
+
+    Responses:
+    200 OK:
+    {
+        "access_token": "new_access_token"
+    }
+
+    401 Unauthorized:
+    {
+        "msg": "Missing Authorization Header"
+    }
+    """
     user_id = get_jwt_identity()
     access_token = create_access_token(identity=str(user_id), expires_delta=timedelta(minutes=current_app.config['ACCESS_TOKEN_EXPIRATION_MINUTES']))
     return jsonify({"access_token": access_token})
