@@ -6,38 +6,20 @@ db = SQLAlchemy()
 
 # Enum for Order Status
 class OrderStatus(Enum):
-    pending = 'pending'      # Order placed but not yet processed
-    shipped = 'shipped'      # Order shipped
-    delivered = 'delivered'  # Order delivered
-    canceled = 'canceled'    # Order canceled
-
-# Enum for Payment Status
-class PaymentStatus(Enum):
-    pending = 'pending'      # Payment not yet made
-    completed = 'completed'  # Payment successful
-    failed = 'failed'        # Payment failed
-
-# Enum for Payment Method
-class PaymentMethod(Enum):
-    credit_card = 'credit_card'    # Payment via credit card
-    paypal = 'paypal'              # Payment via PayPal
-    bank_transfer = 'bank_transfer'  # Payment via bank transfer
+    PENDING = 'pending'      # Order placed but not yet processed
+    SHIPPED = 'shipped'      # Order shipped
+    DELIVERED = 'delivered'  # Order delivered
+    CANCELED = 'canceled'    # Order canceled
 
 # Enum for Invoice Status
 class InvoiceStatus(Enum):
-    pending = 'pending'    # Invoice not yet paid
-    paid = 'paid'          # Invoice paid
-
-# Enum for User Role
-class UserRole(Enum):
-    admin = 'admin'
-    customer = 'customer'
-    employee = 'employee'
+    PENDING = 'pending'    # Invoice not yet paid
+    PAID = 'paid'          # Invoice paid
 
 class ProductCategory(Enum):
-    plants = 'Roślina'
-    animals = 'Zwierzę'
-    others = 'Inne'
+    PLANTS = 'Roślina'
+    ANIMALS = 'Zwierzę'
+    OTHERS = 'Inne'
 
 
 # User Model
@@ -86,7 +68,7 @@ class Order(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id', ondelete='CASCADE'))
     total_amount = db.Column(db.Numeric(10, 2), nullable=False)
     shipping_address = db.Column(db.Text)
-    status = db.Column(db.Enum(OrderStatus, name="order_status_enum"), default=OrderStatus.pending)
+    status = db.Column(db.Enum(OrderStatus, name="order_status_enum"), default=OrderStatus.PENDING)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
@@ -122,7 +104,7 @@ class Invoice(db.Model):
     invoice_number = db.Column(db.String(100), unique=True, nullable=False)
     invoice_date = db.Column(db.DateTime, default=datetime.utcnow)
     total_amount = db.Column(db.Numeric(10, 2), nullable=False)
-    invoice_status = db.Column(db.Enum(InvoiceStatus, name="invoice_status_enum"), default=InvoiceStatus.pending)
+    invoice_status = db.Column(db.Enum(InvoiceStatus, name="invoice_status_enum"), default=InvoiceStatus.PENDING)
 
     order = db.relationship('Order', backref=db.backref('invoices', lazy=True))
 
