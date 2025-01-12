@@ -10,7 +10,6 @@ order_bp = Blueprint('order', __name__)
 @order_bp.route('/order', methods=['POST'])
 @jwt_required()
 def place_order():
-    # TODO: send emails with invoices
     data = request.json
     user_id = data.get('user_id')
     products_dict = data.get('products')
@@ -28,9 +27,11 @@ def place_order():
         if product:
             if amount > product.stock_quantity:
                 return jsonify({'error': 'Specified quantity too large'}), 409
-            product.quantity -= amount
+            product.stock_quantity -= amount
             price = product.price
             order_items.append({'product_id': pid, 'quantity': amount, 'price': price})
+        else:
+            return jsonify({'error': 'Product not found'}), 404
 
         total += price * amount
 
@@ -42,8 +43,8 @@ def place_order():
     new_order_items = []
 
     for item in order_items:
-        new_order_items.append(OrderItem(order_id=new_order.order_id, product_id=item.get('product_id', 
-                                quantity=item.get('quantity'), price=item.get('price'))))
+        new_order_items.append(OrderItem(order_id=new_order.order_id, product_id=item['product_id'], 
+                                quantity=item['quantity'], price=item['price']))
 
     new_invoice = Invoice(order_id=new_order.order_id, invoice_number=uuid.uuid4(), total_amount=total)
 
