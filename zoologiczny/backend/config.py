@@ -7,3 +7,4 @@ class Config:
     SENDER_EMAIL_ADDRESS = os.getenv('SENDER_EMAIL_ADDRESS')
     SENDER_EMAIL_PASSWORD = os.getenv('SENDER_EMAIL_PASSWORD')
     CORS_HEADERS = 'Content-Type'
+    JWT_SECRET_KEY = os.getenv('JWT_SECRET_KEY')
