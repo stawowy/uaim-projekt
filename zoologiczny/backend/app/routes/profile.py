@@ -5,10 +5,10 @@ from .. import db
 
 profile_bp = Blueprint('profile', __name__)
 
-@profile_bp.route('/profile/<user_id>')
+@profile_bp.route('/profile/<username>')
 @jwt_required()
-def get_user(user_id):
-    user = db.session.query(User).filter_by(user_id=user_id).first()
+def get_user(username):
+    user = db.session.query(User).filter_by(username=username).first()
 
     if not user:
         return jsonify({'error': 'User not found'}), 404
